@@ -13,7 +13,7 @@ the same basic features (search, sorting) as in Greenlight.
 
 Install system dependencies:
 ```
-sudo apt-get isntall git curl
+sudo apt-get install git curl
 ```
 
 Clone the repository with `git`:
