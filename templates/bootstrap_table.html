@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>Preview</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Start</th>
+        <th>Length</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in records %}
+        <tr>
+            <td><img src={{ r['preview'] }}></td>
+          <td>{{ r['name'] }}</td>
+          <td data-sort="{{ r['timestamp'] }}">{{ r['date'] }}</td>
+          <td data-sort="{{ r['timestamp'] }}">{{ r['time'] }}</td>
+          <td data-sort="{{ r['duration_raw'] }}">{{ r['duration'] }}</td>
+          <td><a href={{ r['url'] }}>Link</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        columns: [
+          {searchable: false, orderable: false},
+          {searchable: true, orderable: true},
+          {orderable: true, searchable: true},
+          {orderable: true, searchable: true},
+          {orderable: true, searchable: false},
+          {searchable: false, orderable: false},
+          ],
+      });
+    });
+  </script>
+{% endblock %}

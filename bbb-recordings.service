@@ -1,0 +1,12 @@
+[Unit]
+Description=Custom BBB records list
+After=network.target
+
+[Service]
+User=generic
+WorkingDirectory=/home/generic/bbb-records
+ExecStart=/usr/local/bin/flask run --port 5001
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
